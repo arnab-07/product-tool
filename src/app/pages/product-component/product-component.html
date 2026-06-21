@@ -1,0 +1,31 @@
+<div class="product-container">
+  @for (product of products; track product.id) {
+    <div class="product-card">
+
+      <img
+        [src]="product.thumbnail"
+        [alt]="product.title"
+        class="product-image"
+      />
+
+      <h3>{{ product.title }}</h3>
+
+      <p class="description">
+        {{ product.description }}
+      </p>
+
+      <div class="price-section">
+        <span class="price">${{ product.price }}</span>
+
+        <span class="discount">
+          {{ product.discountPercentage }}% OFF
+        </span>
+      </div>
+
+      <button (click)="addToCart(product)">
+        Add To Cart
+      </button>
+
+    </div>
+  }
+</div>

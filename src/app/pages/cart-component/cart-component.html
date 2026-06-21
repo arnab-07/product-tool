@@ -1,0 +1,33 @@
+<div class="cart-container">
+
+    <h2>Shopping Cart ({{ cartItems.length }})</h2>
+
+    @if(cartItems.length === 0) {
+        <p>Your cart is empty</p>
+    }
+
+    @for(item of cartItems; track item.id) {
+
+        <div class="cart-item">
+
+            <img
+                [src]="item.thumbnail"
+                [alt]="item.title"
+                class="cart-image"
+            />
+
+            <div class="cart-details">
+                <h4>{{ item.title }}</h4>
+
+                <p>${{ item.price }}</p>
+
+                <button (click)="removeFromCart(item.id)">
+                    Remove
+                </button>
+            </div>
+
+        </div>
+
+    }
+
+</div>
