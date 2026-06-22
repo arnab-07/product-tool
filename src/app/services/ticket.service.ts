@@ -13,7 +13,9 @@ export interface UserResponse {
     users: User[];
 }
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class TicketService {
 
     constructor(private http: HttpClient) {}

@@ -1,7 +1,8 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { API_URL } from  '../api.token';
 import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
 
 export function apiFactory():string {
     
@@ -12,7 +13,9 @@ export function apiFactory():string {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(),
     provideBrowserGlobalErrorListeners(),
+    provideZoneChangeDetection(),
     provideRouter(routes),
     {
       provide: API_URL,

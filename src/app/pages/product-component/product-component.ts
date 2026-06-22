@@ -1,6 +1,7 @@
-import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef, NgZone, signal, Signal } from '@angular/core';
 import { ProductService, Product } from '../../services/product.service';
 import { CommonModule } from "@angular/common";
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-component',
@@ -12,21 +13,19 @@ import { CommonModule } from "@angular/common";
 export class ProductComponent implements OnInit {
 
   productService = inject(ProductService);
-  products: Product[] = [];
+  cartService = inject(CartService);
+  products = signal<Product[]>([]);
   cartItems: Product[] = [];
-  cdr = inject(ChangeDetectorRef);
-
+  
   ngOnInit(): void {
     this.productService.product().subscribe( response => 
     {
-      this.products = response.products
-      this.cdr.detectChanges();
+      this.products.set(response.products)
     }
     );
   }
 
   addToCart(product: Product): void {
-    this.cartItems.push(product);
-    console.log('Cart Items:', this.cartItems);
+    this.cartService.addToCart(product);
   }
 }

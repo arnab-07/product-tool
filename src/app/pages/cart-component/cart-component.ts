@@ -1,21 +1,24 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { ProductService, Product } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart-component',
   imports: [],
   standalone: true,
-  providers:[ProductService],
   templateUrl: './cart-component.html',
   styleUrl: './cart-component.scss',
 })
 export class CartComponent implements OnInit {
 
   public productservice = inject(ProductService);
-  cartItems:any[] = [];
+  public cartservice = inject(CartService);
+  public cartItems = signal<Product[]>([]);
 
   ngOnInit(): void {
-    
+    this.cartservice.items.subscribe(response => {
+      this.cartItems.set(response);
+    })
   }
   removeFromCart(id:any){
     console.log(id)

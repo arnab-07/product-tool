@@ -1,12 +1,12 @@
 <div class="cart-container">
 
-    <h2>Shopping Cart ({{ cartItems.length }})</h2>
+    <h2>Shopping Cart ({{ cartItems().length }})</h2>
 
-    @if(cartItems.length === 0) {
+    @if(cartItems().length === 0) {
         <p>Your cart is empty</p>
     }
 
-    @for(item of cartItems; track item.id) {
+    @for(item of cartItems(); track item.id) {
 
         <div class="cart-item">
 
