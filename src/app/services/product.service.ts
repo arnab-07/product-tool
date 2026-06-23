@@ -11,6 +11,11 @@ import { Observable } from 'rxjs';
     thumbnail: string
 }
 
+export interface ProductView extends Product {
+    quantity?: number
+    inCart?: boolean
+}
+
 interface ProductResponse {
     products : Product[]
 }

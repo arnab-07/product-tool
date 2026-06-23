@@ -57,3 +57,21 @@ button {
   background: #1976d2;
   color: white;
 }
+
+.qty-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.qty-container button {
+  width: 40px;
+  height: 40px;
+}
+
+.qty-container span {
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}

@@ -1,6 +1,6 @@
 <div class="product-container">
 
-  @for (product of products(); track product.id) {
+  @for (product of filteredProducts(); track product.id) {
     <div class="product-card">
 
       <img
@@ -23,9 +23,31 @@
         </span>
       </div>
 
+      @if(product.inCart) {
+
+      <div class="qty-container">
+
+        <button (click)="decreaseQuantity(product)">
+          -
+        </button>
+
+        <span>
+          {{ product.quantity || 1 }}
+        </span>
+
+        <button (click)="increaseQuantity(product)">
+          +
+        </button>
+
+      </div>
+
+    } @else {
+
       <button (click)="addToCart(product)">
         Add To Cart
       </button>
+
+    }
 
     </div>
   }
