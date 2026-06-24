@@ -40,6 +40,8 @@ export class ProductComponent implements OnInit {
           })
         })
       ).subscribe(res => this.filteredProducts.set(res));
+
+      
   }
 
   addToCart(product: Product): void {

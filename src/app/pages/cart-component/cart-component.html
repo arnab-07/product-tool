@@ -21,13 +21,18 @@
 
                 <p>${{ item.price }}</p>
 
-                <button (click)="removeFromCart(item.id)">
+                <!-- <button (click)="removeFromCart(item.id)">
                     Remove
-                </button>
+                </button> -->
             </div>
 
         </div>
 
+    }
+
+    @if(cartItems().length != 0)
+    {
+        <p>Total amount: {{ cartValue }}</p>
     }
 
 </div>
